@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Pagiii Group</title>
+</head>
+<body>
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto min-h-[calc(100vh-4rem)] flex flex-col items-center">
+        <div class="text-center mb-10 w-full">
+            <h1 class="text-3xl font-bold text-slate-800 mb-2">Admin Dashboard</h1>
+            <p class="text-slate-500">Manage your platform resources efficiently.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+            <!-- User List -->
+            <a href="/admin/user_list" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:border-indigo-300 transition-all duration-300 group flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-2xl mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-1">User List</h3>
+                <p class="text-sm text-slate-500">View and manage all registered users.</p>
+            </a>
+            
+            <!-- Add Product -->
+            <a href="/admin/add_product" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:indigo-indigo-300 transition-all duration-300 group flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-2xl mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-1">Add Product</h3>
+                <p class="text-sm text-slate-500">Create new products or packages.</p>
+            </a>
+            
+            <!-- Get Product -->
+            <a href="/admin/get_product" class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-lg hover:border-indigo-300 transition-all duration-300 group flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center text-2xl mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-1">Manage Products</h3>
+                <p class="text-sm text-slate-500">View, edit, or delete existing products.</p>
+            </a>
+        </div>
+        
+        <div class="mt-12 text-center w-full max-w-5xl">
+            <a href="/admin/logout" class="inline-flex items-center gap-2 bg-red-50 text-red-600 border border-red-200 hover:bg-red-600 hover:text-white px-6 py-2.5 rounded-lg font-medium transition-colors">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+            </a>
+        </div>
+    </section>
+</body>
+</html>
