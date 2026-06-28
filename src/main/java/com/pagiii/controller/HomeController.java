@@ -51,6 +51,11 @@ public class HomeController {
         return new ModelAndView("login");
     }
 
+    @GetMapping("/user_dash")
+    public ModelAndView showUserDash() {
+        return new ModelAndView("user_dash");
+    }
+
     @PostMapping("/login")
     public ModelAndView getlogin(@RequestParam String userName, @RequestParam String password) {
         if(userName.equals("admin") && password.equals("admin")){
@@ -59,10 +64,10 @@ public class HomeController {
 
         User auth = userService.authenticate(userName, password);
         if(auth != null) {
-            return new ModelAndView("user_dash");
+            return new ModelAndView("redirect:/user_dash");
         } 
         else {
-            return new ModelAndView("/login").addObject("error", "Invalid credentials. Please try again.");
+            return new ModelAndView("login").addObject("error", "Invalid credentials. Please try again.");
         }
     }
 }
