@@ -1,12 +1,14 @@
 services:
 
-  nginx:
-    image: nginx:alpine
-    container_name: nginx-proxy
+  caddy:
+    image: caddy:alpine
+    container_name: caddy-proxy
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
     depends_on:
       - springboot-app
     networks:
@@ -55,3 +57,6 @@ services:
 networks:
   springboot-mysql-network:
     name: springboot-mysql-network
+
+volumes:
+  caddy_data:
