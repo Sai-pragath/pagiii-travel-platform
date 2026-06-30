@@ -7,18 +7,36 @@ A modern, responsive travel destination and product management platform.
 - **Spring Boot Backend**: Robust Java backend utilizing Spring Boot, Spring Data JPA, and Thymeleaf.
 - **MySQL Database**: Connected to a fully Dockerized MySQL 8.0 instance for reliable data storage.
 - **CI/CD Ready**: Includes multiple automated Jenkins pipelines (Root, Database, and Docker Compose) for streamlined deployment.
-- **Reverse Proxy**: Includes a highly secure Nginx reverse proxy architecture to route traffic cleanly on port 80.
+- **Reverse Proxy**: Includes a highly secure **native Apache** reverse proxy setup to strictly meet assessment requirements.
 
 ## Running Locally / Deployment (Docker Compose)
 
-The easiest and recommended way to deploy this application on any server (like AWS EC2) is using our pre-configured Docker Compose setup:
+The easiest and recommended way to deploy this application on your AWS EC2 instance is using our pre-configured Docker Compose setup paired with our native Apache setup script:
 
 1. Clone this repository on your server.
-2. Build and start the entire stack (Nginx, Spring Boot App, MySQL) in detached mode:
+2. Build and start the Java and MySQL stack in detached mode:
    ```bash
    docker compose up -d --build
    ```
-3. Your application is now live on your server's public IP address (or `http://localhost` if running locally).
+3. Install and configure the native Apache Reverse Proxy (Run this once!):
+   ```bash
+   ./setup-apache.sh
+   ```
+4. Verify the Apache service is running natively (as required by the assessment):
+   ```bash
+   systemctl status apache2
+   ```
+
+Your application is now live on your server's public IP address.
+
+## Finishing the Assessment Rubric (Manual Steps)
+To completely satisfy the assessment rubric, you must manually complete the DNS and SSL configurations:
+1. **cPanel DNS**: Log into your provided cPanel account and add an **A Record** pointing your assigned domain to the EC2 Public IP.
+2. **Let's Encrypt SSL**: Once the DNS resolves to your server, run the following to automatically secure Apache with HTTPS:
+   ```bash
+   sudo apt install certbot python3-certbot-apache
+   sudo certbot --apache
+   ```
 
 ## Managing Components Individually
 
