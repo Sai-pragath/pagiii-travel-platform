@@ -1,3 +1,0 @@
-43.204.235.127.nip.io {
-    reverse_proxy springboot-app:8080
-}
