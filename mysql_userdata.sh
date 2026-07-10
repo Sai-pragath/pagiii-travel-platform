@@ -23,4 +23,4 @@ systemctl restart mysql
 echo "Mysql is installed successfully"
 echo "Do modification in spring app in that application.properties"
 echo "spring.datasource.url=jdbc:mysql://<EC2_PUBLIC_IP>:3306/your_db"
-echo "Script Done By @sak_shetty"
+echo "Script Done By @Sai-pragath"
